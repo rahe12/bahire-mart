@@ -10,6 +10,8 @@ const saleRoutes = require("./routes/sale.routes");
 const expenseRoutes = require("./routes/expense.routes");
 const reportRoutes = require("./routes/report.routes");
 const errorHandler = require("./middlewares/errorHandler");
+const stockCheckRoutes =
+  require("./routes/stockCheck.routes");
 
 const app = express();
 
@@ -33,6 +35,10 @@ app.use("/api/v1/purchases", purchaseRoutes);
 app.use("/api/v1/sales", saleRoutes);
 app.use("/api/v1/expenses", expenseRoutes);
 app.use("/api/v1/reports", reportRoutes);
+app.use(
+  "/api/v1/stock-checks",
+  stockCheckRoutes
+);
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
